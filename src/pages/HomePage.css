@@ -9,22 +9,17 @@
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: #000428; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #004e92,
-    #000428
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #004e92,
-    #000428
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: var(--color-3);
+  /* background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  ); */
 }
 
 .hero-name {
   font-weight: 900;
-  background: linear-gradient(to right, rgb(181, 141, 255), rgb(255, 73, 73));
+  background: linear-gradient(to right, rgb(169, 131, 240), rgb(252, 82, 82));
   background-clip: padding-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -38,7 +33,6 @@
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  color: white;
   white-space: normal; /* Allow multiline! */
   /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); */
 }
@@ -46,8 +40,12 @@
 .hero-title {
   text-transform: uppercase;
   font-weight: 600;
-  text-shadow: 4px 4px 8px rgb(0, 0, 0, 0.5);
-  background: linear-gradient(to right, rgb(255, 255, 255), rgb(0, 255, 234));
+  color: rgb(15, 91, 129);
+  background: linear-gradient(
+    to right,
+    rgb(0, 78, 146),
+    rgb(0, 4, 40)
+  ); /* Blue to Purple */
   background-clip: padding-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -56,7 +54,7 @@
 .cursor {
   font-weight: 600;
   font-size: 24px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgb(0, 0, 0);
   animation: blink 0.8s infinite;
 }
 @keyframes blink {
@@ -69,18 +67,13 @@
   }
 }
 
-.section-title {
-  font-weight: 800;
-  color: var(--color-1);
-}
-
 .pro-intro-section {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
   width: 100%;
-  padding: 5rem 0rem 5rem 0rem;
+  padding: 5rem 0rem 2rem 0rem;
   /* background: rgb(180, 180, 180, 0.2); */
 }
 
@@ -244,6 +237,140 @@
   gap: 1rem;
 }
 
+.contact-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 5rem;
+}
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+}
+
+.contact-title {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(
+    to right,
+    rgb(0, 78, 146),
+    rgb(0, 4, 40)
+  ); /* Blue to Purple */
+  background-clip: padding-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.whatsapp-section {
+  width: 60%;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+.chat-header {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  align-items: start;
+  padding: 0.5rem;
+  width: 100%;
+  background-color: rgb(238, 237, 235);
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+.chat-section {
+  padding: 1rem 0.5rem;
+  background: url("../assets/whatsapp-backg.png");
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.chat-row {
+  display: flex;
+  gap: 12px;
+  margin: 18px 0;
+  align-items: flex-start;
+}
+/* Align sent bubbles to right, received to left */
+.chat-row.sent {
+  justify-content: flex-end;
+}
+.bubble {
+  position: relative;
+  max-width: 72%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  line-height: 1.3;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  word-wrap: break-word;
+}
+
+/* Sent (green) bubble with top-right tail */
+.bubble.sent {
+  background: #dcf8c6;
+  color: #111;
+  border-top-right-radius: calc(18px - 6px); /* slightly sharper corner */
+}
+/* Tail for sent (top-right) */
+.bubble.sent::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: -6px; /* pull it above the top edge */
+  right: 12px; /* horizontal position of tail */
+  background: #dcf8c6;
+  transform: rotate(45deg);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+/* Optional subtle border/shadow under tail so it reads like WhatsApp */
+.bubble.sent::before {
+  content: "";
+  position: absolute;
+  width: calc(12px + 2px);
+  height: calc(12px + 2px);
+  top: -7px;
+  right: 11px;
+  transform: rotate(45deg);
+  background: transparent;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 2px;
+  z-index: -1;
+}
+
+.whatsapp-btn {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 3px 10px 3px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+  background-image: url("../assets/whatsapp-logo.png");
+  background-size: contain;
+  animation: whatsapp-btn-animation 2s infinite ease-in-out;
+}
+
+@keyframes whatsapp-btn-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 @media (max-width: 992px) {
   .about-exp-box {
     flex-direction: column;
@@ -259,6 +386,9 @@
     background-size: contain;
   }
   .skill-cat-wrapper {
+    width: 100%;
+  }
+  .whatsapp-section {
     width: 100%;
   }
 }
@@ -284,6 +414,10 @@
 
   .skills-body {
     flex-direction: column;
+    width: 100%;
+  }
+
+  .whatsapp-section {
     width: 100%;
   }
 }

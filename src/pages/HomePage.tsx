@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { memo, useContext, useEffect, useState, type FC } from "react";
 import "./HomePage.css";
 import CircleLink from "../components/CircleLink";
@@ -17,12 +18,13 @@ import PostgreSQLImg from "../assets/postgresql.png";
 import GitImg from "../assets/git.svg";
 import DsImg from "../assets/ds-icon.png";
 import AlgoImg from "../assets/algorithms.png";
+import AvatarImg from "../assets/user-default-icon.jpg";
 import { WindowWidthContext } from "../exports";
 import SkillItem from "../components/SkillItem";
 
-interface Props {}
+// interface Props {}
 
-const HomePage: FC<Props> = () => {
+const HomePage: FC<unknown> = () => {
   const winInnerWidth = useContext(WindowWidthContext);
   const [heroTitle, setHeroTitle] = useState<string>("");
   const titles = [
@@ -95,7 +97,7 @@ const HomePage: FC<Props> = () => {
         <div className="hero-section">
           <div>
             <h1
-              className="color-4"
+              className="color-1"
               style={{
                 fontWeight: "800",
                 fontSize: `${Math.max(30, winInnerWidth / 40)}px`,
@@ -142,7 +144,7 @@ const HomePage: FC<Props> = () => {
             />
             <CircleLink
               image={XImg}
-              link={"https://x.com/prayag_vaibhav"}
+              link={"https://x.com/codewiz_v"}
               linkTip={"X"}
             />
             <CircleLink
@@ -205,33 +207,71 @@ const HomePage: FC<Props> = () => {
               </p>
             </div>
           </div>
-          <div className="skills-container">
+        </div>
+        <div className="skills-container">
+          <h1
+            className="skills-title"
+            style={{
+              fontSize: `${Math.max(40, winInnerWidth / 25)}px`,
+            }}
+          >
+            SKILLS
+          </h1>
+          <div className="skills-body">
+            {skills.map((skillCat, catIndex) => (
+              <div className="skill-cat-wrapper">
+                <div key={`skill-cat-${catIndex}`} className="skill-cat-box">
+                  <h1 className="skill-cat-title">{skillCat.name}</h1>
+                  <div className="skill-list">
+                    {skillCat.skills_list.map((skill, skillIndex) => (
+                      <SkillItem
+                        image={skill.image}
+                        name={skill.name}
+                        key={`skill-${catIndex}-${skillIndex}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="contact-container">
+          <div className="contact-section">
             <h1
-              className="skills-title"
+              className="contact-title"
               style={{
                 fontSize: `${Math.max(40, winInnerWidth / 25)}px`,
               }}
             >
-              Skills
+              Contact
             </h1>
-            <div className="skills-body">
-              {skills.map((skillCat, catIndex) => (
-                <div className="skill-cat-wrapper">
-                  <div key={`skill-cat-${catIndex}`} className="skill-cat-box">
-                    <h1 className="skill-cat-title">{skillCat.name}</h1>
-                    <div className="skill-list">
-                      {skillCat.skills_list.map((skill, skillIndex) => (
-                        <SkillItem
-                          image={skill.image}
-                          name={skill.name}
-                          key={`skill-${catIndex}-${skillIndex}`}
-                        />
-                      ))}
-                    </div>
-                  </div>
+            <section className="whatsapp-section">
+              <div className="chat-header">
+                <a
+                  target={"_blank"}
+                  href="https://api.whatsapp.com/send?phone=+9519798683&text=Hi%2C%20Vaibhav..."
+                  className={"whatsapp-btn"}
+                ></a>
+                <img
+                  style={{ borderRadius: "100%" }}
+                  src={AvatarImg}
+                  width={"75px"}
+                  height={"75px"}
+                />
+                <div style={{ paddingTop: "0.5rem", color: "black" }}>
+                  <h3>Vaibhav Pandey</h3>
+                  <h4 style={{ fontWeight: "normal" }}>
+                    Typically replies within hours
+                  </h4>
                 </div>
-              ))}
-            </div>
+              </div>
+              <section className="chat-section">
+                <div className="chat-row sent">
+                  <div className="bubble sent">Hi Vaibhav ...</div>
+                </div>
+              </section>
+            </section>
           </div>
         </div>
       </div>

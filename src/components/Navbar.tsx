@@ -22,7 +22,6 @@ const Navbar: FC<Props> = () => {
             </a>
             <h1
               style={{
-                color: "var(--color-4)",
                 letterSpacing: "2px",
                 fontWeight: "500",
               }}
@@ -32,7 +31,7 @@ const Navbar: FC<Props> = () => {
           </div>
           <div className="navbar-links">
             {links.map(link => (
-              <span className="border-bottom border-color-5-dark">
+              <span className="">
                 <a className="letter-space-1 translate-up-5" href={`#${link}`}>
                   {link}
                 </a>

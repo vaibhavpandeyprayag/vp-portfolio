@@ -32,3 +32,9 @@ git icon - https://git-scm.com/downloads/logos
 data-structure icon - https://www.flaticon.com/free-icon/project-management_14234775?term=data+structure&page=1&position=95&origin=tag&related_id=14234775
 
 algorithms icon - https://www.flaticon.com/free-icon/neural_2103633?term=algorithms&page=1&position=7&origin=search&related_id=2103633
+
+whatsapp-backg - https://gist.github.com/abdurrahmanekr/2747d704edec93a06e454eba2653e0df
+
+user-default-avatar icon - https://www.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_36332651.htm#fromView=search&page=1&position=47&uuid=3471cb8f-e30e-484a-bed3-1d3abee3e3a4&query=Default+user
+
+whatsapp icon - https://commons.wikimedia.org/wiki/File:2062095_application_chat_communication_logo_whatsapp_icon.svg

@@ -21,6 +21,7 @@ const Navbar: FC<Props> = () => {
               <span className="menu-icon-bar"></span>
             </a>
             <h1
+              className="nav-heading"
               style={{
                 letterSpacing: "2px",
                 fontWeight: "500",

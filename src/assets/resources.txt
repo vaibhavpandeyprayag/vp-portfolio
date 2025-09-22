@@ -38,3 +38,5 @@ whatsapp-backg - https://gist.github.com/abdurrahmanekr/2747d704edec93a06e454eba
 user-default-avatar icon - https://www.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_36332651.htm#fromView=search&page=1&position=47&uuid=3471cb8f-e30e-484a-bed3-1d3abee3e3a4&query=Default+user
 
 whatsapp icon - https://commons.wikimedia.org/wiki/File:2062095_application_chat_communication_logo_whatsapp_icon.svg
+
+gmail icon - https://www.freepik.com/icon/logo_15465653#fromView=search&page=1&position=1&uuid=9c47ab2f-61e9-4eb5-8f60-0afff001c5e3

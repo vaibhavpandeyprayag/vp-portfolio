@@ -1,6 +1,6 @@
 .navbar-container {
   z-index: 2;
-  height: 100px;
+  height: 80px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -9,6 +9,10 @@
   position: fixed;
   background-color: white;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+.nav-heading {
+  font-size: 32px;
 }
 
 .navbar-links {
@@ -84,7 +88,16 @@
 
 @media (max-width: 992px) {
   .navbar-container {
-    height: 75px;
+    height: 60px;
+  }
+
+  .nav-heading {
+    font-size: 20px;
+  }
+
+  .navbar-links a {
+    font-weight: 600;
+    font-size: 12px;
   }
 }
 

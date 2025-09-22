@@ -19,6 +19,7 @@ import GitImg from "../assets/git.svg";
 import DsImg from "../assets/ds-icon.png";
 import AlgoImg from "../assets/algorithms.png";
 import AvatarImg from "../assets/user-default-icon.jpg";
+import GmailImg from "../assets/gmail-icon.png";
 import { WindowWidthContext } from "../exports";
 import SkillItem from "../components/SkillItem";
 
@@ -237,42 +238,53 @@ const HomePage: FC<unknown> = () => {
           </div>
         </div>
         <div className="contact-container">
-          <div className="contact-section">
-            <h1
-              className="contact-title"
-              style={{
-                fontSize: `${Math.max(40, winInnerWidth / 25)}px`,
-              }}
-            >
-              Contact
-            </h1>
-            <section className="whatsapp-section">
-              <div className="chat-header">
-                <a
-                  target={"_blank"}
-                  href="https://api.whatsapp.com/send?phone=+9519798683&text=Hi%2C%20Vaibhav..."
-                  className={"whatsapp-btn"}
-                ></a>
-                <img
-                  style={{ borderRadius: "100%" }}
-                  src={AvatarImg}
-                  width={"75px"}
-                  height={"75px"}
-                />
-                <div style={{ paddingTop: "0.5rem", color: "black" }}>
-                  <h3>Vaibhav Pandey</h3>
-                  <h4 style={{ fontWeight: "normal" }}>
-                    Typically replies within hours
-                  </h4>
-                </div>
+          <h1
+            className="contact-title"
+            style={{
+              fontSize: `${Math.max(40, winInnerWidth / 25)}px`,
+            }}
+          >
+            Contact
+          </h1>
+          {/* <div className="contact-section"> */}
+          <section className="whatsapp-section">
+            <div className="chat-header">
+              <a
+                target={"_blank"}
+                href="https://api.whatsapp.com/send?phone=+9519798683&text=Hi%2C%20Vaibhav..."
+                className={"whatsapp-btn"}
+              ></a>
+              <img
+                style={{ borderRadius: "100%" }}
+                src={AvatarImg}
+                width={"75px"}
+                height={"75px"}
+              />
+              <div style={{ paddingTop: "0.5rem", color: "black" }}>
+                <h3>Vaibhav Pandey</h3>
+                <h4 style={{ fontWeight: "normal", fontSize: "14px" }}>
+                  Typically replies within hours
+                </h4>
               </div>
-              <section className="chat-section">
-                <div className="chat-row sent">
-                  <div className="bubble sent">Hi Vaibhav ...</div>
-                </div>
-              </section>
+            </div>
+            <section className="chat-section">
+              <div className="chat-row sent">
+                <div className="bubble sent">Hi Vaibhav ...</div>
+              </div>
             </section>
-          </div>
+          </section>
+          {/* </div> */}
+          <label className={"whatsapp-alternative-label"}>
+            Don't prefer <span style={{ color: "#22d143" }}>Whatsapp</span>?
+            <span style={{ color: "black" }}> Send an email</span>
+            <span></span>
+          </label>
+          <a
+            href="mailto:vaibhavpandeyprayag@gmail.com"
+            className="email-button"
+          >
+            <img src={GmailImg} width={"40px"} />
+          </a>
         </div>
       </div>
     </div>

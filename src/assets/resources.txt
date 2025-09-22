@@ -40,3 +40,5 @@ user-default-avatar icon - https://www.freepik.com/free-vector/isolated-young-ha
 whatsapp icon - https://commons.wikimedia.org/wiki/File:2062095_application_chat_communication_logo_whatsapp_icon.svg
 
 gmail icon - https://www.freepik.com/icon/logo_15465653#fromView=search&page=1&position=1&uuid=9c47ab2f-61e9-4eb5-8f60-0afff001c5e3
+
+bullet-point icon - https://www.freepik.com/icon/play_16740786#fromView=keyword&page=1&position=18&uuid=a73ad655-1a48-499c-b1f7-eb441c1f1f8d

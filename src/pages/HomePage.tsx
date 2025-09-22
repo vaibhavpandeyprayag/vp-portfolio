@@ -20,6 +20,8 @@ import DsImg from "../assets/ds-icon.png";
 import AlgoImg from "../assets/algorithms.png";
 import AvatarImg from "../assets/user-default-icon.jpg";
 import GmailImg from "../assets/gmail-icon.png";
+import FashionEcommerceProject from "../assets/FashionEcommerceProject.png";
+import CCFDProject from "../assets/CCFDProject.png";
 import { WindowWidthContext } from "../exports";
 import SkillItem from "../components/SkillItem";
 
@@ -68,6 +70,24 @@ const HomePage: FC<unknown> = () => {
         { image: DsImg, name: "Data Structures" },
         { image: AlgoImg, name: "Alogrithms" },
       ],
+    },
+  ];
+
+  const projects: {
+    name: string;
+    brief: string;
+    projectType: "Web" | "Android" | "AI & Data Science";
+    thumbnail?: string;
+  }[] = [
+    {
+      name: "Fashion Ecommerce",
+      brief: "A fashion ecommerce website",
+      projectType: "Web",
+    },
+    {
+      name: "Credit Card Fraud Detection",
+      brief: "A credit card fraud detection system",
+      projectType: "AI & Data Science",
     },
   ];
 
@@ -235,6 +255,85 @@ const HomePage: FC<unknown> = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+        <div className="project-container">
+          <h1
+            className="project-section-title"
+            style={{
+              fontSize: `${Math.max(40, winInnerWidth / 25)}px`,
+            }}
+          >
+            Projects
+          </h1>
+          <h3
+            style={{
+              textAlign: "center",
+              fontWeight: 500,
+              marginBottom: "2rem",
+              padding: "0.5rem",
+              fontFamily: "cursive",
+            }}
+          >
+            From interactive{" "}
+            <span className={"project-tagline-styling"}>web apps</span> to
+            intelligent{" "}
+            <span className={"project-tagline-styling"}>AI solutions</span>
+          </h3>
+          <div className="project-list">
+            {projects.map((project, projectIndex) => (
+              <article
+                className="project-list-item"
+                key={`project-${projectIndex}`}
+              >
+                <div className="img-container">
+                  <img
+                    className={"project-img"}
+                    src={
+                      projectIndex == 0 ? FashionEcommerceProject : CCFDProject
+                    }
+                  />
+                </div>
+                <div className="info-container">
+                  <h3
+                    style={{
+                      fontFamily: "serif",
+                      fontWeight: "100",
+                      letterSpacing: "1px",
+                      fontSize: "20px",
+                    }}
+                  >
+                    {project.name}
+                  </h3>
+                  <label
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                      fontSize: "13px",
+                      letterSpacing: "1px",
+                      color: "rgb(247, 172, 42)",
+                    }}
+                  >
+                    <span
+                      style={{
+                        display: "inline-block",
+                        width: "10px",
+                        height: "10px",
+                        borderRadius: "100%",
+                        backgroundColor: "rgb(247, 172, 42)",
+                        boxShadow: "0px 0px 20px 6px rgba(247, 172, 42, 0.5)",
+                      }}
+                    ></span>
+                    {project.projectType}
+                  </label>
+                </div>
+                <button className="open-project-btn">View</button>
+              </article>
+            ))}
+            {/* <article className="project-list-item">
+              <h5>View 15 more projects</h5>
+            </article> */}
           </div>
         </div>
         <div className="contact-container">

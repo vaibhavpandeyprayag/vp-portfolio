@@ -2,18 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-    Send,
-    Mail,
-    MapPin,
-    ExternalLink,
-    CheckCircle,
-    AlertCircle,
-} from "lucide-react";
+import { Send, Mail, MapPin, ExternalLink } from "lucide-react";
 import { profile } from "@/data/profile";
-import { sendContactEmail } from "@/app/actions/contact";
-
-type SubmitStatus = "idle" | "submitting" | "success" | "error";
 
 export function Contact() {
     const [formState, setFormState] = useState({
@@ -22,8 +12,6 @@ export function Contact() {
         subject: "",
         message: "",
     });
-    const [status, setStatus] = useState<SubmitStatus>("idle");
-    const [errorMessage, setErrorMessage] = useState("");
     const [emailCopied, setEmailCopied] = useState(false);
 
     const handleChange = (
@@ -32,22 +20,12 @@ export function Contact() {
         setFormState(prev => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        setStatus("submitting");
-        setErrorMessage("");
-
-        const result = await sendContactEmail(formState);
-
-        if (result.success) {
-            setStatus("success");
-            setFormState({ name: "", email: "", subject: "", message: "" });
-            setTimeout(() => setStatus("idle"), 4000);
-        } else {
-            setStatus("error");
-            setErrorMessage(result.error || "Something went wrong.");
-            setTimeout(() => setStatus("idle"), 4000);
-        }
+        const { name, email, subject, message } = formState;
+        const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0A${encodeURIComponent(message)}`;
+        window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${body}`;
+        setFormState({ name: "", email: "", subject: "", message: "" });
     };
 
     return (
@@ -170,8 +148,7 @@ export function Contact() {
                                 autoComplete="name"
                                 value={formState.name}
                                 onChange={handleChange}
-                                disabled={status === "submitting"}
-                                className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-primary-text placeholder-muted-text transition-colors focus:border-accent-primary focus:outline-none focus:ring-1 focus:ring-accent-primary disabled:opacity-50"
+                                className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-primary-text placeholder-muted-text transition-colors focus:border-accent-primary focus:outline-none focus:ring-1 focus:ring-accent-primary"
                                 placeholder="Your name"
                             />
                         </div>
@@ -190,8 +167,7 @@ export function Contact() {
                                 autoComplete="email"
                                 value={formState.email}
                                 onChange={handleChange}
-                                disabled={status === "submitting"}
-                                className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-primary-text placeholder-muted-text transition-colors focus:border-accent-primary focus:outline-none focus:ring-1 focus:ring-accent-primary disabled:opacity-50"
+                                className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-primary-text placeholder-muted-text transition-colors focus:border-accent-primary focus:outline-none focus:ring-1 focus:ring-accent-primary"
                                 placeholder="your.email@example.com"
                             />
                         </div>
@@ -209,8 +185,7 @@ export function Contact() {
                                 required
                                 value={formState.subject}
                                 onChange={handleChange}
-                                disabled={status === "submitting"}
-                                className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-primary-text placeholder-muted-text transition-colors focus:border-accent-primary focus:outline-none focus:ring-1 focus:ring-accent-primary disabled:opacity-50"
+                                className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-primary-text placeholder-muted-text transition-colors focus:border-accent-primary focus:outline-none focus:ring-1 focus:ring-accent-primary"
                                 placeholder="What's this about?"
                             />
                         </div>
@@ -228,46 +203,20 @@ export function Contact() {
                                 rows={5}
                                 value={formState.message}
                                 onChange={handleChange}
-                                disabled={status === "submitting"}
-                                className="w-full resize-none rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-primary-text placeholder-muted-text transition-colors focus:border-accent-primary focus:outline-none focus:ring-1 focus:ring-accent-primary disabled:opacity-50"
+                                className="w-full resize-none rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-primary-text placeholder-muted-text transition-colors focus:border-accent-primary focus:outline-none focus:ring-1 focus:ring-accent-primary"
                                 placeholder="Tell me about your project or idea..."
                             />
                         </div>
 
-                        {status === "success" && (
-                            <div className="flex items-center gap-2 rounded-lg bg-accent-secondary-light px-4 py-3 text-sm text-accent-secondary">
-                                <CheckCircle className="h-4 w-4 shrink-0" />
-                                Message sent successfully! I&apos;ll get back to
-                                you soon.
-                            </div>
-                        )}
-
-                        {status === "error" && (
-                            <div className="flex items-center gap-2 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600 dark:bg-red-950/30 dark:text-red-400">
-                                <AlertCircle className="h-4 w-4 shrink-0" />
-                                {errorMessage}
-                            </div>
-                        )}
-
                         <button
                             type="submit"
-                            disabled={status === "submitting"}
-                            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-accent-primary px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-accent-primary-hover hover:shadow-md hover:shadow-accent-primary/20 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed sm:w-auto"
+                            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-accent-primary px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-accent-primary-hover hover:shadow-md hover:shadow-accent-primary/20 active:scale-[0.98] sm:w-auto"
                         >
-                            {status === "submitting" ? (
-                                <>
-                                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-                                    Sending...
-                                </>
-                            ) : (
-                                <>
-                                    <Send
-                                        className="h-4 w-4"
-                                        aria-hidden="true"
-                                    />
-                                    Send Message
-                                </>
-                            )}
+                            <Send
+                                className="h-4 w-4"
+                                aria-hidden="true"
+                            />
+                            Send Message
                         </button>
                     </motion.form>
                 </div>

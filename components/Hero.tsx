@@ -30,13 +30,13 @@ export function Hero() {
                         className="order-2 lg:order-1"
                     >
                         {profile.availability && (
-                            <motion.span
-                                variants={item}
-                                className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent-secondary/30 bg-accent-secondary-light px-3 py-1 text-xs font-medium text-accent-secondary"
-                            >
-                                <span className="h-1.5 w-1.5 rounded-full bg-accent-secondary animate-pulse" />
+                            <div className="mt-6 mb-2 inline-flex items-center gap-2 self-start rounded-full border border-green-200 bg-green-50 px-4 py-2 text-sm font-medium text-green-700 dark:border-green-800 dark:bg-green-950/40 dark:text-green-400">
+                                <span className="relative flex h-2.5 w-2.5">
+                                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+                                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
+                                </span>
                                 {profile.availability}
-                            </motion.span>
+                            </div>
                         )}
 
                         <motion.h1
